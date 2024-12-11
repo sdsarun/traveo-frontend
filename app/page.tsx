@@ -1,7 +1,16 @@
+import { UserProfile } from "@/components/user";
+import Link from "next/link";
+import { Suspense } from "react";
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
       <h1 className="font-bold text-3xl">Comming soon...</h1>
+      <Suspense fallback="Loading...">
+        <UserProfile />
+      </Suspense>
+      <Link href={"/api/auth/login"}>Log In</Link>
+      <Link href={"/api/auth/logout"}>Log Out</Link>
     </div>
   );
 }
