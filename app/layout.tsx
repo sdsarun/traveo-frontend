@@ -1,7 +1,10 @@
+import { notoSans, notoSansMono } from "@/core/configs/fonts";
+import theme from "@/core/configs/theme";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
+import { ThemeProvider } from "@mui/material";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Metadata } from "next";
 import "./globals.css";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { notoSans, notoSansMono } from "@/core/configs/fonts";
 
 export const metadata: Metadata = {
   title: "Traveo",
@@ -19,7 +22,14 @@ export default function RootLayout({
       className={`${notoSans.variable} ${notoSansMono.variable} antialiased`}
     >
       <body>
-        <UserProvider>{children}</UserProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider
+            theme={theme}
+            disableTransitionOnChange
+          >
+            <UserProvider>{children}</UserProvider>
+          </ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
