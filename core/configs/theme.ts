@@ -11,14 +11,23 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: "var(--font-noto-sans)",
+    button: {
+      textTransform: "none",
+    },
   },
   components: {
     MuiButton: {
       defaultProps: {
-        variant: "contained"
-      }
-    }
-  }
+        variant: "contained",
+        disableElevation: true,
+      },
+      styleOverrides: {
+        contained: {
+          borderRadius: 20,
+        },
+      },
+    },
+  },
 });
 
 export default theme;
