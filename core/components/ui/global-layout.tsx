@@ -5,9 +5,11 @@ export default function GlobalLayout({ children }: React.PropsWithChildren) {
   return (
     <Box>
       <Container
-        // maxWidth={false}
-        disableGutters
-      >{children}</Container>
+      // maxWidth={false}
+      // disableGutters
+      >
+        {children}
+      </Container>
     </Box>
   );
 }
