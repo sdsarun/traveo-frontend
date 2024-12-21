@@ -1,3 +1,7 @@
+import { CORE_SERVICES } from "../constants/services";
 import { fetcherFactory } from "../utils/factory/fetcher";
 
-export const fetcher = fetcherFactory();
+export const api = {
+  traveoMain: fetcherFactory(CORE_SERVICES.traveoMain),
+  traveoLocal: fetcherFactory(CORE_SERVICES.traveoLocal)
+} as const;
