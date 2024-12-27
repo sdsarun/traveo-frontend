@@ -1,23 +1,34 @@
 "use client";
 
+import { cn } from "@/core/utils/common/cn";
+import useMounted from "@/core/utils/hooks/use-mounted";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { IconType } from "react-icons";
+import { MdOutlineLightMode, MdOutlineNightlight } from "react-icons/md";
 
-export default function ThemeSwitcher() {
-  const [mounted, setMounted] = useState(false);
+export type ThemeSwitcherProps = {
+  rootClassName?: string;
+  iconLightProps?: React.ComponentProps<IconType>;
+  iconDarkProps?: React.ComponentProps<IconType>;
+};
+
+export default function ThemeSwitcher({
+  rootClassName,
+  iconDarkProps,
+  iconLightProps
+}: ThemeSwitcherProps) {
+  const mounted = useMounted();
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   if (!mounted) return null;
 
   return (
-    <div>
-      The current theme is: {theme}
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
-    </div>
+    <button className={cn("border-[1px] rounded-full p-1", rootClassName)} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+      {theme === "light" ? (
+        <MdOutlineNightlight size={24} {...iconDarkProps} />
+      ) : (
+        <MdOutlineLightMode size={24} {...iconLightProps} />
+      )}
+    </button>
   );
 }
