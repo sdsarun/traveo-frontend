@@ -25,9 +25,9 @@ export default function ThemeSwitcher({
   return (
     <button className={cn("border-[1px] rounded-full p-1", rootClassName)} onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
       {theme === "light" ? (
-        <MdOutlineNightlight size={24} {...iconDarkProps} />
+        <MdOutlineNightlight size={18} {...iconDarkProps} />
       ) : (
-        <MdOutlineLightMode size={24} {...iconLightProps} />
+        <MdOutlineLightMode size={18} {...iconLightProps} />
       )}
     </button>
   );

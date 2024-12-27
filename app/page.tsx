@@ -1,3 +1,4 @@
+import ThemeSwitcher from "@/core/components/ui/theme-swticher";
 import { Button } from "@nextui-org/button";
 
 export default function HomePage() {
