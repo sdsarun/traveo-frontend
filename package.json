@@ -10,12 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.5",
-    "@emotion/cache": "^11.14.0",
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.0",
-    "@mui/material": "^6.2.0",
-    "@mui/material-nextjs": "^6.2.0",
-    "leaflet": "^1.9.4",
+    "dayjs": "^1.11.13",
     "next": "15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -26,7 +21,6 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/leaflet": "^1.9.15",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
