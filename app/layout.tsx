@@ -2,6 +2,7 @@ import { notoSans, notoSansMono } from "@/core/configs/fonts";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Providers from "@/core/components/providers/providers";
 
 export const metadata: Metadata = {
   title: "Traveo",
@@ -18,9 +19,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${notoSans.variable} ${notoSansMono.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${notoSans.variable} ${notoSansMono.variable} antialiased`}
+      suppressHydrationWarning
+    >
       <body>
-        <ClerkProvider>{children}</ClerkProvider>
+        <Providers>
+          <ClerkProvider>{children}</ClerkProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -1,3 +1,5 @@
+import { Button } from "@nextui-org/button";
+
 export default function HomePage() {
   return (
     <div>
@@ -9,9 +11,7 @@ export default function HomePage() {
         </p>
 
         <div>
-          <button className="py-4 px-8 text-lg bg-blue-500 text-white rounded-md hover:bg-blue-600">
-            Start Planning
-          </button>
+          <Button>Start Planning</Button>
         </div>
       </div>
     </div>
