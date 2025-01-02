@@ -1,10 +1,11 @@
 import type { ValidationError } from "yup";
 
-export type ValidationErrors<ObjectSchema = Record<string, any>> = Partial<Record<keyof ObjectSchema, string>>;
+export type ValidationErrors<ObjectSchema extends Record<string, any> = Record<string, any>> = Partial<Record<keyof ObjectSchema, string>>;
 
 export function parseYupValidationError<ObjectSchema extends Record<string, any>>(
   error: ValidationError
 ): ValidationErrors<ObjectSchema> {
+  console.log("[LOG]: ~ error:", error)
   const errors: ValidationErrors<ObjectSchema> = {};
 
   for (const err of error.inner) {
