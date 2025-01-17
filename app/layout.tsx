@@ -1,9 +1,8 @@
+import Providers from "@/core/components/providers/providers";
+import CoreLayout from "@/core/components/ui/core-layout";
 import { notoSans, notoSansMono } from "@/core/configs/fonts";
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Providers from "@/core/components/providers/providers";
-import GlobalLayout from "@/core/components/ui/global-layout";
-import Navbar from "@/core/components/ui/navbar";
 
 export const metadata: Metadata = {
   title: "Traveo",
@@ -14,11 +13,13 @@ export const viewport: Viewport = {
   maximumScale: 1
 };
 
-export default function RootLayout({
-  children
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export type RootLayoutProps = Readonly<
+  React.PropsWithChildren<{
+    modal: React.ReactNode;
+  }>
+>;
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang="en"
@@ -27,10 +28,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <GlobalLayout>
-            <Navbar />
-            {children}
-          </GlobalLayout>
+          <CoreLayout>{children}</CoreLayout>
         </Providers>
       </body>
     </html>
