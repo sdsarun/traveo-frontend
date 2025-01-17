@@ -1,12 +1,14 @@
 import React from "react";
 import { Alert, type AlertProps } from "@nextui-org/alert";
 
+export type FormSubmitMessageStatus = "success" | "failed";
+
 export type FormSubmitMessageProps = {
-  status: "success" | "failed";
-  message: string;
+  status?: FormSubmitMessageStatus;
+  message?: string;
 };
 
-const mapStatusColor: Record<FormSubmitMessageProps["status"], AlertProps["color"]> = {
+const mapStatusColor: Record<FormSubmitMessageStatus, AlertProps["color"]> = {
   success: "success",
   failed: "danger"
 };
@@ -14,7 +16,9 @@ const mapStatusColor: Record<FormSubmitMessageProps["status"], AlertProps["color
 export default function FormSubmitMessage({ status = "success", message }: FormSubmitMessageProps) {
   return (
     <>
-      {message && status && <Alert color={mapStatusColor[status]} title={message} description={null} />}
+      {message && status && (
+        <Alert color={mapStatusColor?.[status]} title={message} description={null} />
+      )}
     </>
   );
 }
